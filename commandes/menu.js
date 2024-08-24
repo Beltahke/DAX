@@ -44,6 +44,7 @@ const date = moment().format('DD/MM/YYYY');
 
     let menuMsg = `
 ╰┈➤ʜᴇʟʟᴏ ᴛʜᴇʀᴇ ${nomAuteurMessage}
+
 ╭═══❂ *BUG MENU* ❂
 ┃ ❏ *xʀᴇᴀᴄᴛ <ʀᴇᴘʟʏ ᴄʜᴀᴛ>*
 ┃ ❏ *x <ɴᴜᴍʙᴇʀ|ᴀᴍᴏᴜɴᴛ>*
