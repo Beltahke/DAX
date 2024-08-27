@@ -40,7 +40,11 @@ const date = moment().format('DD/MM/YYYY');
 ┃❂ 𝗠𝗼𝗱𝗲 : *${mode}*
 ┃❂ 𝗗𝗮𝘁𝗲  : *${date}* 
 ╰──────────────┈⊷
- 𝐍𝐄𝐖 𝐁𝐔𝐆 𝐁𝐎𝐓 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘 𝐁𝐄𝐋𝐓𝐀𝐇\n${readmore}`;
+*Follow our channel for updates*
+➤ whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F
+*Subscribe to my YouTube channel* 
+➤ youtube.com/@Beltahtech2024
+𝐁𝐎𝐓 𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘 𝐁𝐄𝐋𝐓𝐀𝐇\n${readmore}`;
 
     let menuMsg = `
 ╰┈➤ʜᴇʟʟᴏ ᴛʜᴇʀᴇ ${nomAuteurMessage}
@@ -86,6 +90,8 @@ const date = moment().format('DD/MM/YYYY');
 ┃ ❏ *ᴘᴍʙᴜɢ*
 ┃ ❏ *ᴛʀᴏʟʟʏʙᴜɢ*
 ╰══════════════════⊷
+BUGS 🐛 ARE MEANT FOR ONLINE ENEMIES.
+NOT YOUR FRIENDS 🥺🥺
 `;
     for (const cat in coms) {
         menuMsg += `╭═══❂ *${cat}* ❂`;
