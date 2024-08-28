@@ -18,7 +18,7 @@ const runtime = function (seconds) {
  return dDisplay + hDisplay + mDisplay + sDisplay; 
  } 
 let timestamp = speed() 
-let beltahmdspeed = (speed() - timestamp).toFixed(3)
+let beltahspeed = (speed() - timestamp).toFixed(4)
 zokou({ nomCom: 'ping',
     desc: 'To check ping',
     Categorie: 'Check',
@@ -33,15 +33,15 @@ async (dest, zk, commandeOptions) => {
 
 
 
-await repondre(`*Pong!!!*\n ${beltahmdspeed} Ms `);
+await repondre(`*Pong!!!*\n ${beltahspeed} Ms `);
 
 }
 );
 
 
-zokou({ nomCom: 'active',
+/*zokou({ nomCom: 'active',
     desc: 'To check ping',
-    Categorie: 'Check',
+    Categorie: 'General',
     reaction: '⏲️', 
     fromMe: 'true', 
 
@@ -57,7 +57,7 @@ await zk.sendMessage(dest, { video: { url: 'https://telegra.ph/file/4bbcfdf0a62d
 }
 
 }
-);
+);*/
 
 zokou({ nomCom: 'uptime',
     desc: 'To check runtime',    
@@ -70,7 +70,7 @@ zokou({ nomCom: 'uptime',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-                 await repondre(`Hello ${m.pushName},\n*The Uptime of SCENE-MD-V3 is* : ${runtime(process.uptime())}`) 
+                 await repondre(`*Uptime of SCENE-MD-V3* : ${runtime(process.uptime())}`) 
 
    
 
