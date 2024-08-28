@@ -33,7 +33,7 @@ async (dest, zk, commandeOptions) => {
 
 
 
-await repondre(`*Pong!!!*\n ${beltahspeed} Ms `);
+await repondre(`*Ping---Pong!!!*\n *${beltahspeed} Ms* `);
 
 }
 );
@@ -70,7 +70,7 @@ zokou({ nomCom: 'uptime',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-                 await repondre(`*Uptime of SCENE-MD-V3* : ${runtime(process.uptime())}`) 
+       await zk.sendMessage(dest, { link: { url: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' }, caption: ` *SCENE-MD V3.0.0* is active since *${runtime(process.uptime())}*`, { quoted: m });
 
    
 
