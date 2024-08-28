@@ -21,7 +21,7 @@ let timestamp = speed()
 let beltahspeed = (speed() - timestamp).toFixed(4)
 zokou({ nomCom: 'ping',
     desc: 'To check ping',
-    Categorie: 'Check',
+    Categorie: 'General',
     reaction: '⛽', 
     fromMe: 'true', 
 
@@ -70,7 +70,7 @@ zokou({ nomCom: 'uptime',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-       await repondre(dest, { link: {url: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' } , caption: ` *SCENE-MD V3.0.0* is active since *${runtime(process.uptime())}*`, { quoted: m });
+       await repondre( {link: {url: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , caption: ` *SCENE-MD V3.0.0* is active since *${runtime(process.uptime())}*`, { quoted: m });
 
    
 
