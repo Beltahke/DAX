@@ -19,6 +19,7 @@ const runtime = function (seconds) {
  } 
 let timestamp = speed() 
 let beltahspeed = (speed() - timestamp).toFixed(4)
+
 zokou({ nomCom: 'ping',
     desc: 'To check ping',
     Categorie: 'General',
@@ -70,7 +71,12 @@ zokou({ nomCom: 'uptime',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-       await repondre( {link: {url: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , caption: ` *SCENE-MD V3.0.0* is active since *${runtime(process.uptime())}*`, { quoted: m });
+
+let scene = `https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F`;
+    let capuchino = `*${runtime(process.uptime())}*` 
+
+  await zk.sendMessage(dest, { link: scene }, { capuchino: 'Uptime of SCENE-MD-V3 :' capuchino 'Ms'}, { quoted: ms });
+
 
    
 
@@ -92,8 +98,6 @@ zokou({ nomCom: 'ss',
     if (!arg || arg.length === 0) return repondre("provide a link...");
 
          const linkk = arg.join(' ');
-
-
 
 let linkkk = `https://api.maher-zubair.tech/misc/sstab?url=${linkk}&dimension=720x720`;
 
