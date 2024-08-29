@@ -1,111 +1,152 @@
-const { zokou } = require("../framework/zokou");
-const moment = require("moment-timezone");
-const { getBuffer } = require("../framework/dl/Function");
-const { default: axios } = require('axios');
-const speed = require("performance-now");
+const {
+  zokou
+} = require("./../framework/zokou");
+const {
+  format,
+  runtime
+} = require('../framework/mesfonctions');
+const os = require('os');
+const speed = require('performance-now');
+const {
+  performance
+} = require('perf_hooks');
+const conf = require('../set');
 
-
-const runtime = function (seconds) { 
- seconds = Number(seconds); 
- var d = Math.floor(seconds / (3600 * 24)); 
- var h = Math.floor((seconds % (3600 * 24)) / 3600); 
- var m = Math.floor((seconds % 3600) / 60); 
- var s = Math.floor(seconds % 60); 
- var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " d, ") : ""; 
- var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " h, ") : ""; 
- var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " m, ") : ""; 
- var sDisplay = s > 0 ? s + (s == 1 ? " second" : " s") : ""; 
- return dDisplay + hDisplay + mDisplay + sDisplay; 
- } 
-let timestamp = speed() 
-let beltahspeed = (speed() - timestamp).toFixed(4)
-
-zokou({ nomCom: 'ping',
-    desc: 'To check ping',
-    Categorie: 'General',
-    reaction: '⛽', 
-    fromMe: 'true', 
-
-
+zokou(
+  {
+    nomCom: 'ping',
+    categorie: 'General',
+    reaction: '🏮',
+    alias: ['p']
   },
 
-async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre} = commandeOptions;
+  async (dest, zk, commandOptions) => {
+    const {
+      ms, arg, repondre
+    } = commandOptions;
+    const start = new Date().getTime();
+    const msg = await zk.sendMessage(dest, {
+      text: 'Beltah Pinging...',
+    }, {
+      quoted: ms
+    });
+    const end = new Date().getTime();
+    const ping = end - start;
+    await zk.sendMessage(dest, {
+      text: `*Pong* ${ping} *Ms*`, edit: {
+        id: msg.key.id, remoteJid: dest
+      }});
+    await zk.sendMessage(dest, {
+      react: {
+        text: "⚪", key: ms.key
+      }})
+  }
+)
 
-
-
-await repondre(`*Ping---Pong!!!*\n *${beltahspeed} Ms* `);
-
-}
-);
-
-
-/*zokou({ nomCom: 'active',
-    desc: 'To check ping',
-    Categorie: 'General',
-    reaction: '⏲️', 
-    fromMe: 'true', 
-
-
+zokou(
+  {
+    nomCom: 'info',
+    reaction: 'ℹ',
+    alias: ['i']
   },
 
-async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre, } = commandeOptions;
+  async (dest, zk, commandOptions) => {
+    const {
+      ms, arg, repondre
+    } = commandOptions;
+    // data
+    const tumbUrl = 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F';
+    const used = process.memoryUsage();
+    const cpus = os.cpus().map(cpu => {
+      cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0);
+      return cpu
+    });
+    const cpu = cpus.reduce((last, cpu, _, {
+      length
+    }) => {
+      last.total += cpu.total
+      last.speed += cpu.speed / length
+      last.times.user += cpu.times.user
+      last.times.nice += cpu.times.nice
+      last.times.sys += cpu.times.sys
+      last.times.idle += cpu.times.idle
+      last.times.irq += cpu.times.irq
+      return last
+    }, {
+      speed: 0,
+      total: 0,
+      times: {
+        user: 0,
+        nice: 0,
+        sys: 0,
+        idle: 0,
+        irq: 0
+      }
+    });
+    let timestamp = speed();
+    let latensi = speed() - timestamp;
+    let neww = performance.now();
+    let oldd = performance.now();
+    const response = `
+Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
 
+💻 Info Server
+    RAM: ${format(os.totalmem() - os.freemem())} / ${format(os.totalmem())}
 
+_NodeJS Memory Usaage_
+    ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v => v.length)), ' ')}: ${format(used[key])}`).join('\n')}
 
-await zk.sendMessage(dest, { video: { url: 'https://telegra.ph/file/4bbcfdf0a62d8a53165ee.mp4' }, caption: `Hello ${m.pushName}, *SCENE-MD V3.0.0* is alive since  ${runtime(process.uptime())}`, { quoted: m }); 
-}
-
-}
-);*/
-
-zokou({ nomCom: 'uptime',
-    desc: 'To check runtime',    
-    Categorie: 'General',
-    reaction: '⏲️', 
-    fromMe: 'true', 
-
-
-  },
-  async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre } = commandeOptions;
-
-
-let scene = `https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F`;
-    let capuchino = `*${runtime(process.uptime())}*` 
-
-  await zk.sendMessage(dest, { link: scene }, { capuchino: 'Uptime of SCENE-MD-V3 :' capuchino 'Ms'}, { quoted: ms });
-
-
-   
-
-
+${cpus[0] ? `_Total CPU Usage_
+    ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
+_CPU Core(s) Usage (${cpus.length} Core CPU)_
+    ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}`: ''}
+    `.trim();
+    await zk.sendMessage(dest, {
+      text: response,
+      contextInfo: {
+        externalAdReply: {
+          showAdAttribution: true,
+          title: `${conf.BOT}`,
+          body: `${latensi.toFixed(4)} Second`,
+          thumbnailUrl: `${tumbUrl}`,
+          sourceUrl: global.link,
+          mediaType: 1,
+          renderLargerAbhinail: true
+        }
+      }
+    }, {
+      quoted: ms
+    })
   }
 );
 
-
-zokou({ nomCom: 'ss',
-    desc: 'screenshots website',
-    Categorie: 'General',
-    reaction: '🎥', 
-    fromMe: 'true', 
-
-},
-  async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre } = commandeOptions;
-
-    if (!arg || arg.length === 0) return repondre("provide a link...");
-
-         const linkk = arg.join(' ');
-
-let linkkk = `https://api.maher-zubair.tech/misc/sstab?url=${linkk}&dimension=720x720`;
-
-let res = await getBuffer(linkkk);
-   let caption = '*Powered by SCENE-MD*' 
-
-await zk.sendMessage(dest, { image: res }, { caption: caption }, { quoted: ms });
-
-
-}
+zokou(
+  {
+    nomCom: 'runtime',
+    reaction: '🗿',
+    alias: ['uptime']
+  },
+  async (dest, zk, commandOptions) => {
+    const {
+      ms
+    } = commandOptions;
+    const tumbUrl = 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F';
+    const runtimetext = `*SCENE-MD-V3*\n*Bot Have Been Running For ${runtime(process.uptime())}* 👽`;
+    zk.sendMessage(dest, {
+      text: runtimetext,
+      contextInfo: {
+        externalAdReply: {
+          showAdAttribution: true,
+          title: `${conf.BOT}`,
+          body: `「 RUNTIME 」`,
+          thumbnailUrl: tumbUrl,
+          sourceUrl: global.link,
+          mediaType: 1,
+          renderLargerAbhinail: true
+        }
+      }
+    }, {
+      quoted: ms
+    })
+  }
 );
