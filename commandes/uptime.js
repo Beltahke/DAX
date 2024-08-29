@@ -38,16 +38,17 @@ zokou(
       }});
     await zk.sendMessage(dest, {
       react: {
-        text: "⚪", key: ms.key
+        text: "🗿", key: ms.key
       }})
   }
 )
 
 zokou(
   {
-    nomCom: 'info',
-    reaction: 'ℹ',
-    alias: ['i']
+    nomCom: 'speed',
+    Categorie:'General',
+    reaction: '⚠️',
+    alias: ['s']
   },
 
   async (dest, zk, commandOptions) => {
@@ -123,21 +124,22 @@ _CPU Core(s) Usage (${cpus.length} Core CPU)_
 zokou(
   {
     nomCom: 'runtime',
+    Categorie: 'General',
     reaction: '🗿',
-    alias: ['uptime']
+    alias: ['u']
   },
   async (dest, zk, commandOptions) => {
     const {
       ms
     } = commandOptions;
     const tumbUrl = 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F';
-    const runtimetext = `*SCENE-MD-V3*\n*Bot Have Been Running For ${runtime(process.uptime())}* 👽`;
+    const runtimetext = `*SCENE-MD-V3*\n*Bot Have Been Running For ${runtime(process.uptime())}* `;
     zk.sendMessage(dest, {
       text: runtimetext,
       contextInfo: {
         externalAdReply: {
           showAdAttribution: true,
-          title: `${conf.BOT}`,
+          title: `BELTAH TECH 254 🇰🇪`,
           body: `「 RUNTIME 」`,
           thumbnailUrl: tumbUrl,
           sourceUrl: global.link,
