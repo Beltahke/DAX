@@ -70,7 +70,7 @@ zokou({ nomCom: 'bot',
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
-                 await repondre(`𝗦𝗖𝗘𝗡𝗘-𝗠𝗗 𝗜𝗦 𝗢𝗡𝗟𝗜𝗡𝗘 ⏳\n\n°𝗨𝗽𝘁𝗶𝗺𝗲 𝗼𝗳 𝗦𝗖𝗘𝗡𝗘-𝗠𝗗 : *${runtime(process.uptime())}*\n°𝗥𝗨𝗡𝗡𝗜𝗡𝗚 𝗔𝗧 𝗔 𝗦𝗣𝗘𝗘𝗗 𝗢𝗙 : *${flashspeed}* 𝗠𝗦\n> 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 : 𝗕𝗲𝗹𝘁𝗮𝗵 𝗧𝗲𝗰𝗵🇰🇪`) 
+                 await repondre(`╭══ ❍ 𝐒𝐂𝐄𝐍𝐄-𝐌𝐃-𝐕𝟑 ❍\n> ⏳𝗦𝗖𝗘𝗡𝗘-𝗠𝗗 𝗜𝗦 𝗢𝗡𝗟𝗜𝗡𝗘 ⏳\n\n> ➤ 𝗨𝗽𝘁𝗶𝗺𝗲 𝗼𝗳 𝗦𝗖𝗘𝗡𝗘-𝗠𝗗 : *${runtime(process.uptime())}*\n\n> ➤ 𝗥𝗨𝗡𝗡𝗜𝗡𝗚 𝗔𝗧 𝗔 𝗦𝗣𝗘𝗘𝗗 𝗢𝗙 : *${flashspeed}* 𝗠𝗦\n\n> 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 : 𝗕𝗲𝗹𝘁𝗮𝗵 𝗧𝗲𝗰𝗵🇰🇪\n╰═════════════════⊷`) 
 
    
 
