@@ -2,9 +2,10 @@ const { setLydia, zokou, jidToNum } = require('../framework/zokou/')
 
 zokou(
   {
-    nomcom: 'lydia ?(.*)',
+    nomCom: 'lydia ?(.*)',
     desc: 'to on off chat bot',
-    Category: 'misc',
+    Category: 'General',
+
   },
   async (message, match) => {
     if (!match)
