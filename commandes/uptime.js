@@ -37,8 +37,7 @@ zokou(
         id: msg.key.id, remoteJid: dest
       }});
     await zk.sendMessage(dest, {
-      react: {
-        text: "🗿", key: ms.key
+      react:{ "🙂‍↕",text: "Pinged from the Saver", key: ms.key
       }})
   }
 )
@@ -54,7 +53,7 @@ zokou(
     const {
       ms
     } = commandOptions;
-    const tumbUrl = 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F';
+    const tumbUrl = 'whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F';
     const runtimetext = `*SCENE-MD-V3*\n*Bot Have Been Running For ${runtime(process.uptime())}* `;
     zk.sendMessage(dest, {
       text: runtimetext,
