@@ -37,7 +37,8 @@ zokou(
         id: msg.key.id, remoteJid: dest
       }});
     await zk.sendMessage(dest, {
-      react:{ "🙂‍↕",text: "Pinged from the Saver", key: ms.key
+      react:{ 
+              text: "🙂‍↕️", key: ms.key
       }})
   }
 )
